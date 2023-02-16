@@ -17,13 +17,17 @@ public class Player implements Serializable {
     private String position;
     private String phoneNumber;
     private String imageUrl;
+
+    @Column(nullable = false, updatable = false)
+    private String playerCode;
     public Player() {}
-    public Player(String name, String email, String position, String phoneNumber, String imageUrl) {
+    public Player(String name, String email, String position, String phoneNumber, String imageUrl, String playerCode) {
         this.name = name;
         this.email = email;
         this.position = position;
         this.phoneNumber = phoneNumber;
         this.imageUrl = imageUrl;
+        this.playerCode = playerCode;
     }
 
     public Long getId() {
@@ -72,6 +76,14 @@ public class Player implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getPlayerCode() {
+        return playerCode;
+    }
+
+    public void setPlayerCode(String playerCode) {
+        this.playerCode = playerCode;
     }
 
     @Override
