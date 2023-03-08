@@ -43,7 +43,7 @@ public class PlayerResource {
         return new ResponseEntity<>(updatedPlayer, HttpStatus.OK);
     }
 
-    @PutMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deletePlayer(@PathVariable("id") Long id) {
         playerService.deletePlayer(id);
         return new ResponseEntity<>(HttpStatus.OK);
