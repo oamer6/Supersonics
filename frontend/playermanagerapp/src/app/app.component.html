@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" style="color:white;">player Manager</a>
+  <a class="navbar-brand" style="color:white;">Player Manager</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarColor02">
      <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-           <a class="nav-link" (click)="onOpenModal(null, 'add')">Add player <span class="sr-only">(current)</span></a>
+           <a class="nav-link" (click)="onOpenModal(null, 'add')">Add Player <span class="sr-only">(current)</span></a>
         </li>
      </ul>
      <form class="form-inline my-2 my-lg-0">
@@ -34,8 +34,14 @@
         </ul>
         <div class="card-body">
            <div class="float-right btn-group btn-group-sm">
-              <a (click)="onOpenModal(player, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-              <a (click)="onOpenModal(player, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+            <div class="hover-text">
+               <span class="tooltip-text top">Edit</span>
+               <a (click)="onOpenModal(player, 'edit')" data-toggle="tooltip" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+            </div>
+            <div class="hover-text">
+               <span class="tooltip-text top">Delete</span>
+               <a (click)="onOpenModal(player, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+            </div>
            </div>
         </div>
      </div>
@@ -47,7 +53,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
        <div class="modal-header">
-          <h5 class="modal-title" id="addplayerModalLabel">Add player</h5>
+          <h5 class="modal-title" id="addplayerModalLabel">Add Player</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -151,9 +157,9 @@
 </div>
 
 <!-- Notification for no players -->
-<div *ngIf="players?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+<div *ngIf="players?.length === 0" class="col-lg-12 col-md-12 col-xl-12">
 <div class="alert alert-info" role="alert">
   <h4 class="alert-heading">NO PLAYERS!</h4>
-  <p>No Players were found.</p>
+  <p>No players were found.</p>
 </div>
 </div>

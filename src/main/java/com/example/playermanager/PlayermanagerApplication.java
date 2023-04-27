@@ -16,6 +16,8 @@ public class PlayermanagerApplication {
 		SpringApplication.run(PlayermanagerApplication.class, args);
 	}
 
+	// Policy enforced on all modern browsers. An application running on one domain is not allowed
+	// to access resources on another domain.
 	@Bean
 	public CorsFilter corsFilter() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();

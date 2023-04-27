@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
+// Create functions that can reach to the backend and do some work for us. 
+
 @Injectable({providedIn: 'root'})
 export class PlayerService {
   private apiServerUrl = environment.apiBaseUrl;

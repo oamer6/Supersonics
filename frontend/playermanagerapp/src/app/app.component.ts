@@ -11,9 +11,10 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
 
+  title = 'playermanagerapp';
   public players: Player[];
-  public editPlayer: Player;
-  public deletePlayer: Player;
+  public editPlayer: Player | undefined;
+  public deletePlayer: Player | undefined;
 
   constructor(private playerService: PlayerService){}
 
@@ -21,54 +22,55 @@ export class AppComponent implements OnInit {
     this.getPlayers();
   }
 
+  // subscribe so we can be notified whenever some data comes back from the server (players or error )
   public getPlayers(): void {
     this.playerService.getPlayers().subscribe(
-      (response: Player[]) => {
+      {next: (response: Player[]) => {
         this.players = response;
         console.log(this.players);
       },
-      (error: HttpErrorResponse) => {
+      error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      }}
     );
   }
 
   public onAddPlayer(addForm: NgForm): void {
     document.getElementById('add-player-form').click();
     this.playerService.addPlayer(addForm.value).subscribe(
-      (response: Player) => {
+      {next: (response: Player) => {
         console.log(response);
         this.getPlayers();
         addForm.reset();
       },
-      (error: HttpErrorResponse) => {
+      error: (error: HttpErrorResponse) => {
         alert(error.message);
         addForm.reset();
-      }
+      }}
     );
   }
 
   public onUpdatePlayer(player: Player): void {
     this.playerService.updatePlayer(player).subscribe(
-      (response: Player) => {
+      {next: (response: Player) => {
         console.log(response);
         this.getPlayers();
       },
-      (error: HttpErrorResponse) => {
+      error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      }}
     );
   }
 
   public onDeletePlayer(playerId: number): void {
     this.playerService.deletePlayer(playerId).subscribe(
-      (response: void) => {
+      {next: (response: void) => {
         console.log(response);
         this.getPlayers();
       },
-      (error: HttpErrorResponse) => {
+      error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      }}
     );
   }
 
@@ -84,7 +86,7 @@ export class AppComponent implements OnInit {
       }
     }
     this.players = results;
-    if (results.length === 0 || !key) {
+    if (!key) {
       this.getPlayers();
     }
   }

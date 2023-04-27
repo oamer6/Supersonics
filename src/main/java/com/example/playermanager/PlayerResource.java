@@ -3,11 +3,9 @@ package com.example.playermanager;
 import com.example.playermanager.model.Player;
 import com.example.playermanager.service.PlayerService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.nio.file.Path;
 import java.util.List;
 
 @RestController
